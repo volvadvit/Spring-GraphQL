@@ -20,20 +20,10 @@ public class PostServiceImpl implements PostService {
     }
 
     public Post getPost(Long id) {
-        if (id != null) {
-            return repository.getById(id);
-        } else {
-            System.err.println("Post ID is null!");
-            return null;
-        }
+        return repository.findById(id).orElseThrow(RuntimeException::new);
     }
 
     public Post createPost(String title, String author, String type) {
-        final Post post = new Post();
-        post.setTitle(title.isEmpty() ? "title" : title);
-        post.setAuthor(author.isEmpty() ? "author" : author);
-        post.setType(type.isEmpty() ? "type" : type);
-        post.setCreatedDate(LocalDate.now());
-        return repository.save(post);
+        return repository.save(new Post(title, author, type, LocalDate.now()));
     }
 }
