@@ -2,7 +2,7 @@
 - Simple SpringBoot app with GraphQL.
 - Worked with PostgreSLQ.
 - After running the app, go to http://localhost:8080/graphiql to send GraphQL request.
-###Query examples:
+### Query examples:
 1) Create entity:
 ```
 mutation {
